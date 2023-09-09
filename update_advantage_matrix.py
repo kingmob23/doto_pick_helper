@@ -1,12 +1,11 @@
 import random
 import json
 
-
 import requests
 import toml
 from bs4 import BeautifulSoup
 
-resources = toml.load("config.toml")
+resources = toml.load("resources.toml")
 
 domain = resources["domain"]
 user_agents = resources["userAgents"]["user_agents"]

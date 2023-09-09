@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <script src="{% static 'scripts.js' %}"></script>
+    <div id="hero-grid">
+        {% for icon_or_name in icons_or_names %}
+        <div class="hero" data-name="{{ icon_or_name }}">
+            {% if '.png' in icon_or_name or '.jpg' in icon_or_name or '.jpeg' in icon_or_name %}
+            <img src="{% static icon_or_name %}" alt="{{ icon_or_name }}" />
+            {% else %}
+            <p>{{ icon_or_name }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <button id="confirm-button" disabled>ОК</button>
+
+    <script>
+        $(document).ready(function () {
+            $('#confirm-button').click(function () {
+                var selected_heroes = [];  // соберите список выбранных героев
+                $.post('', { 'enemy_heroes': selected_heroes }, function (data) {
+                    // обработайте ответ
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
