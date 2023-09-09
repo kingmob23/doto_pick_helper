@@ -15,7 +15,7 @@ mkdir -p icons
 # Чтение массива ссылок из файла и скачивание изображений
 while IFS= read -r url; do
     # Извлечь имя героя из URL
-    hero_name=$(basename "$url" | sed 's/.*\///; s/-.*\(\.jpg\)/\1/')
+    hero_name=$(basename "$url" | sed 's/.*heroes\///; s/-[^-]*\.jpg$/\.jpg/')
 
     # Собрать имя файла
     filename="icons/$hero_name"
